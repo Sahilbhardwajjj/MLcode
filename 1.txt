@@ -1,3 +1,21 @@
+Q.Download heart dataset from following link.
+https://www.kaggle.com/zhaoyingzhu/heartcsv
+Perform following operation on given dataset.
+a) Find Shape of Data
+b) Find Missing Values
+c) Find data type of each column
+d) Finding out Zero's
+e) Find Mean age of patients
+f) Now extract only Age, Sex, ChestPain, RestBP, Chol. Randomly divide dataset in training (75%) and testing (25%).
+Through the diagnosis test I predicted 100 report as COVID positive, but only 45 of those were actually positive. Total 50 people in my sample were actually COVID positive. I have total 500 samples.
+Create confusion matrix based on above data and find
+I. Accuracy
+II
+II. Precision
+III. Recall
+IV. F-1 score
+
+Answer
 import pandas as pd
 df = pd.read_csv("heart.csv")
 
@@ -30,3 +48,23 @@ from sklearn.metrics import ConfusionMatrixDisplay
 ConfusionMatrixDisplay.from_predictions(actual,predicted)
 from sklearn.metrics import classification_report
 print(classification_report(actual,predicted))
+
+
+
+
+
+
+
+
+1. Supervised Learning uses labeled data (input features and known target output) to train a model. 
+2. Unsupervised Learning uses unlabeled data to find patterns or groupings
+3. what is the purpose of setting random_state=0? It ensures reproducibility. 
+   Setting the random seed guarantees that the data will be splitinto the exact same training and testing samples every time the code is run.
+4. True Positive (TP): Actually Positive, Predicted Positive 
+   True Negative (TN): Actually Negative, Predicted Negative.
+   False Positive (FP): Actually Negative, Predicted Positive (Type I error - a 'false alarm').
+   False Negative (FN): Actually Positive, Predicted Negative (Type II error - a 'miss').
+Accuracy (TP + TN) / (TP + TN + FP + FN)
+Precision TP / (TP + FP)
+Recall TP / (TP + FN)
+F1-Score 2 * (Precision * Recall) / (Precision + Recall)
