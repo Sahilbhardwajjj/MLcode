@@ -1,0 +1,59 @@
+import pandas as pd
+df = pd.read_csv("/Users/arpit/Desktop/kaggle/heart.csv")
+df
+df.shape
+df.isnull()
+df.isnull().sum()
+df.count
+df.count()
+df.dtypes
+df.dtypes
+df == 0
+df[df==0]
+df[df==0].count
+df['age'].mean()
+df.columns
+df["slope"].mean()
+df.columns
+df[["age","sex","cp","trestbps","chol"]]
+from sklearn.model_selection import train_test_split
+train , test = train_test_split(df,random_state = 0,test_size=0.25)
+test.shapetest.shape
+train.shape
+import numpy as np
+actual = list(np.ones(45))+list(np.zeros(55))
+np.array(actual)predicted = list(np.ones(40))+list(np.zeros(52))+list(np.ones(8))
+np.array(predicted)from sklearn.metrics import ConfusionMatrixDisplay
+ConfusionMatrixDisplay.from_predictions(actual,predicted)
+from sklearn.metrics import classification_report
+print(classification_report(actual,predicted))
+import numpy as np
+actual = list(np.ones(45))+list(np.zeros(55))
+np.array(actual)
+predicted = list(np.ones(42))+list(np.zeros(50))+list(np.ones(8))
+np.array(predicted)
+from sklearn.metrics import ConfusionMatrixDisplay
+ConfusionMatrixDisplay.from_predictions(actual,predicted)
+from sklearn.metrics import classification_report
+print(classification_report(actual,predicted))
+from sklearn.model_selection import train_test_split
+train , test = train_test_split(df,random_state = 0,train_size=0.25)
+train.shape
+df.shape
+test.shape
+x=df.drop('target',axis='columns')
+x
+y=df['target']
+y
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.25)
+x_train.shape
+x_test.shape
+y_train.shape
+y_test.shape
+reg = LogisticRegression()
+reg.fit(x_train,y_train)
+y_predict=reg.predict(x_test)
+y_predict.shape
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
+sns.heatmap(confusion_matrix(y_test,y_predict),annot=True,fmt='d')
