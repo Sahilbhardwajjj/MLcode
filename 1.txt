@@ -1,44 +1,68 @@
-Perform following operation on given dataset.
-a) Find Shape of Data
-b) Find Missing Values
-c) Find data type of each column
-d) Finding out Zero's
-e) Find Mean age of patients
-f) Now extract only Age, Sex, ChestPain, RestBP, Chol. Randomly divide dataset in training (75%) and testing (25%).
-Create confusion matrix based on above data and find
-Accuracy , Precision , Recall , F-1 score
+Q . Perform following operation on given dataset.
+      a) Find Shape of Data
+      b) Find Missing Values
+      c) Find data type of each column
+      d) Finding out Zero's
+      e) Find Mean age of patients
+      f) Now extract only Age, Sex, ChestPain, RestBP, Chol. Randomly divide dataset in training (75%) and testing (25%).
+      g) Create confusion matrix based on above data and find Accuracy , Precision , Recall , F-1 score
 
+# Import the pandas library for data manipulation and analysis, assigning it the alias 'pd'.
 import pandas as pd
+# Load the data from the "heart.csv" file into a pandas DataFrame named 'df'.
 df = pd.read_csv("heart.csv")
 
+# Display the dimensions (number of rows and columns) of the DataFrame.
 df.shape
 
+# Check every cell in the DataFrame to see if it contains a missing value (NaN), returning a boolean DataFrame.
 df.isnull()
+# Calculate the total number of missing values (NaN) in each column.
 df.isnull().sum()
+# Count the number of non-missing (non-null) values in each column.
 df.count()
 
+# Display the data type (e.g., int64, object) of each column in the DataFrame.
 df.dtypes
 
+# Check every cell in the DataFrame to see if its value is exactly 0, returning a boolean DataFrame.
 df == 0
+# Select and display only the cells that contain the value 0, replacing all others with NaN (used for inspection).
 df[df==0]
+# Count the number of cells in each column that have a value of 0.
 df[df==0].count
 
+# Display a list of all column names in the DataFrame.
 df.columns
+# Select and display all values in the 'age' column (returns a pandas Series).
 df['age']
+# Calculate and display the average value (mean) of the 'age' column.
 df['age'].mean()
 
+# Select and display a new DataFrame containing only the specified columns: "age", "sex", "cp", "trestbps", and "chol".
 df[["age","sex","cp","trestbps","chol"]]
+# Import the train_test_split function for dividing the dataset.
 from sklearn.model_selection import train_test_split
+# Split the entire DataFrame 'df' into training (75%) and testing (25%) sets.
 train , test = train_test_split(df,random_state = 0,test_size=0.25)
 
+# Import the numpy library for numerical operations, assigning it the alias 'np'.
 import numpy as np
+# Create the 'actual' (true) labels: 45 positive (1) cases and 55 negative (0) cases.
 actual = list(np.ones(45))+list(np.zeros(55))
+# Convert the 'actual' list into a NumPy array (used for efficient calculations).
 np.array(actual)
+# Create the 'predicted' labels (simulating a model's output): 48 positive and 52 negative guesses.
 predicted = list(np.ones(40))+list(np.zeros(52))+list(np.ones(8))
+# Convert the 'predicted' list into a NumPy array.
 np.array(predicted)
+# Import the class used to visualize the confusion matrix.
 from sklearn.metrics import ConfusionMatrixDisplay
+# Calculate and display the graphical confusion matrix based on the actual vs. predicted labels.
 ConfusionMatrixDisplay.from_predictions(actual,predicted)
+# Import the function used to generate a comprehensive evaluation report.
 from sklearn.metrics import classification_report
+# Calculate and print the full classification report, including Precision, Recall, F1-score, and Accuracy.
 print(classification_report(actual,predicted))
 
 
@@ -51,15 +75,16 @@ print(classification_report(actual,predicted))
 1. Supervised Learning uses labeled data (input features and known target output) to train a model. 
 2. Unsupervised Learning uses unlabeled data to find patterns or groupings
 3. what is the purpose of setting random_state=0? It ensures reproducibility. 
-   Setting the random seed guarantees that the data will be splitinto the exact same training and testing samples every time the code is run.
+   Setting the random seed guarantees that the data will be split into the exact same training and testing samples every time the code is run.
 4. True Positive (TP): Actually Positive, Predicted Positive 
    True Negative (TN): Actually Negative, Predicted Negative.
    False Positive (FP): Actually Negative, Predicted Positive (Type I error - a 'false alarm').
    False Negative (FN): Actually Positive, Predicted Negative (Type II error - a 'miss').
-Accuracy (TP + TN) / (TP + TN + FP + FN)
-Precision TP / (TP + FP)
-Recall TP / (TP + FN)
-F1-Score 2 * (Precision * Recall) / (Precision + Recall)
+   Accuracy (TP + TN) / (TP + TN + FP + FN)
+   Precision TP / (TP + FP)
+   Recall TP / (TP + FN)
+   F1-Score 2 * (Precision * Recall) / (Precision + Recall)
 5. df = data frame
 6. [[]] -> [] inner is used for python list & [] outer is used for indexing/selection on the DataFrame df
 7. CSV -> comma seperated values
+
