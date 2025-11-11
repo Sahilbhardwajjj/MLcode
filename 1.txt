@@ -62,3 +62,4 @@ Recall TP / (TP + FN)
 F1-Score 2 * (Precision * Recall) / (Precision + Recall)
 5. df = data frame
 6. [[]] -> [] inner is used for python list & [] outer is used for indexing/selection on the DataFrame df
+7. CSV -> comma seperated values
